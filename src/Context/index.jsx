@@ -3,14 +3,25 @@ import { createContext, useState } from "react";
 export const ShoppingCarContext = createContext();
 
 export const ShoppingCarProvider = ({ children }) => {
+    //Shopping cart
     const [count, setCount] = useState(0);
-    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
+    //Product Detail Open/Close
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
     const openProductDetail = () => setIsProductDetailOpen(true);
     const closeProductDetail = () => setIsProductDetailOpen(false);
 
+    
+    //Checkout Side Menu Open/Close
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
+    //Product Detail Product
     const [productToShow, setProductToShow] = useState({});
+    //Shopping cart Add products to cart
+    const [cartProducts, setCartProducts] = useState([]);
+
 
   
     return (
@@ -21,7 +32,12 @@ export const ShoppingCarProvider = ({ children }) => {
             closeProductDetail,
             isProductDetailOpen,
             productToShow,
-            setProductToShow
+            setProductToShow,
+            cartProducts,
+            setCartProducts,
+            isCheckoutSideMenuOpen,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu
         }}>
             {children}
         </ShoppingCarContext.Provider>
